@@ -15,6 +15,12 @@ public class Probability {
         }
         }
 
+    public double getOppositeProbability()
+    {
+         return 1- getProbability() ;
+    }
+
+
     public double getRatio()
     {
       return getProbability();

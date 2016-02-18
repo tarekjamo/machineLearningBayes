@@ -60,6 +60,10 @@ public class BayesRecognizer {
                 {
                     probability=probability*memory.get(number)[j][i].getProbability()/ cumulativeProbability[j][i].getProbability() ;
                 }
+                else
+                {
+                    probability=probability*memory.get(number)[j][i].getOppositeProbability()/ cumulativeProbability[j][i].getOppositeProbability() ;
+                }
             }
         }
         return  probability ;
