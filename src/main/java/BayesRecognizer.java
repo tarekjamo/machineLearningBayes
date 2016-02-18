@@ -9,10 +9,10 @@ import java.util.Scanner;
  */
 public class BayesRecognizer {
     HashMap<Integer, Probability[][]> memory ;
-    Probability[][] allProbability ;
-    public BayesRecognizer(HashMap<Integer, Probability[][]> memory, Probability[][] allProbability) {
+    Probability[][] cumulativeProbability;
+    public BayesRecognizer(HashMap<Integer, Probability[][]> memory, Probability[][] cumulativeProbability) {
         this.memory = memory ;
-        this.allProbability = allProbability ;
+        this.cumulativeProbability = cumulativeProbability;
     }
 
 
@@ -58,7 +58,7 @@ public class BayesRecognizer {
             {
                 if(result[j][i]==1)
                 {
-                    product=product*memory.get(number)[j][i].getProbability()/allProbability[j][i].getProbability() ;
+                    product=product*memory.get(number)[j][i].getProbability()/ cumulativeProbability[j][i].getProbability() ;
                 }
             }
         }
