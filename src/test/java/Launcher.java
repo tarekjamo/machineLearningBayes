@@ -24,7 +24,7 @@ public class Launcher {
           ml.learn(trainingimage, traininglabel) ;
           ml.learn(validationImage,validationLabel);
 
-        BayesRecognizer recognizer = new BayesRecognizer(ml.memory.memory, ml.memory.cumulativeProbability) ;
+        BayesRecognizer recognizer = new BayesRecognizer(ml.statisticsLearned.memory, ml.statisticsLearned.cumulativeProbability) ;
         recognizer.recognize(testImage,testLabel);
 
     }

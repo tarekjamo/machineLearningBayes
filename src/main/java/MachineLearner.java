@@ -7,11 +7,11 @@ import java.util.Scanner;
  */
 public class MachineLearner {
 
-    public Memory memory ; // hash map -> countclassprobability
+    public Statistics statisticsLearned;
 
     public  void learn(File imageFile, File labelFile) {
 
-        memory = new Memory();
+        statisticsLearned = new Statistics();
         ArrayList<MatchEntity> matchEntities = new ArrayList<MatchEntity>() ;
         try {
             Scanner imageScanner = new Scanner(imageFile);
@@ -29,7 +29,7 @@ public class MachineLearner {
 
         save(matchEntities) ;
 
-        matchEntities.stream().forEach(e->memory.learn(e));
+        matchEntities.stream().forEach(e-> statisticsLearned.learn(e));
 
     }
 
@@ -37,7 +37,7 @@ public class MachineLearner {
         for(int index = 0 ; index<=9;index++) {
 
             System.out.println("_________________________" + index);
-            Probability[][] p = memory.memory.get(index);
+            Probability[][] p = statisticsLearned.memory.get(index);
 
             for (int j = 0; j < p.length; j++) {
                 for (int i = 0; i < p[0].length; i++) {

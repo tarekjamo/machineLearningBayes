@@ -5,11 +5,11 @@
 import java.util.ArrayList;
 import java.util.HashMap ;
 
-public class Memory {
+public class Statistics {
         public static Probability[][] cumulativeProbability;
     public HashMap<Integer, Probability[][]> memory ;
 
-    public Memory()
+    public Statistics()
     {
         cumulativeProbability = new Probability[Parameters.y][Parameters.x] ;
         initializeProbabilities(cumulativeProbability);
