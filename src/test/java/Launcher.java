@@ -21,10 +21,10 @@ public class Launcher {
         File testLabel = new File(classLoader.getResource("digitdata/testlabels").getFile());
 
         MachineLearner ml = new MachineLearner();
-          ml.learn(testImage, testLabel) ;
+          ml.learn(trainingimage, traininglabel) ;
           ml.learn(validationImage,validationLabel);
 
-        BayesRecognizer recognizer = new BayesRecognizer(ml.memory.memory, ml.memory.allProbability) ;
+        BayesRecognizer recognizer = new BayesRecognizer(ml.memory.memory, ml.memory.cumulativeProbability) ;
         recognizer.recognize(testImage,testLabel);
 
     }

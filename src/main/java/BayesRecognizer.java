@@ -20,7 +20,7 @@ public class BayesRecognizer {
         try {
             Scanner imageScanner = new Scanner(testImage);
             Scanner labelScanner = new Scanner(testLabel);
-            Pair correctness = new Pair() ;
+            Probability correctness = new Probability() ;
             while(imageScanner.hasNext())
             {
                 int CORRECT_ANSWER = labelScanner.nextInt() ;
@@ -36,7 +36,7 @@ public class BayesRecognizer {
                 String str = " INCORRECT " ;
                 if(CORRECT_ANSWER==indexMax)
                 {
-                    correctness.incrementBlack();
+                    correctness.incrementCount();
                     str = " CORRECT " ;
                 }
                 correctness.incrementTotal();
@@ -49,7 +49,7 @@ public class BayesRecognizer {
         }
     }
 
-    //what is probability of this number being correct; knowing the given input
+    //what is probability of this number being the correct number; knowing the given input
     private double bayes(int number, int[][] result) {
         double product = 1 ;
         for(int j = 0 ; j < result.length ; j++)

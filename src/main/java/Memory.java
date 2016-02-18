@@ -1,19 +1,18 @@
 /**
  * Created by tarekray on 14/02/16.
  */
-import sun.dc.pr.PRError;
 
 import java.util.ArrayList;
 import java.util.HashMap ;
 
 public class Memory {
-        public static Probability[][] allProbability       ;
+        public static Probability[][] cumulativeProbability;
     public HashMap<Integer, Probability[][]> memory ;
 
     public Memory()
     {
-        allProbability = new Probability[Parameters.y][Parameters.x] ;
-        initializeAllProbability();
+        cumulativeProbability = new Probability[Parameters.y][Parameters.x] ;
+        initializeProbabilities(cumulativeProbability);
         memory = new HashMap<Integer, Probability[][]>() ;
     }
 
@@ -41,16 +40,14 @@ public class Memory {
         for(int j = 0 ; j < probabilities.length ; j++){
             for(int i = 0 ; i <probabilities[0].length ; i++)
             {
-                Probability probability = probabilities[j][i] ;
                 int result = results[j][i] ;
-
                 if(result==1)
                 {
-                    probability.incrementCount();
-                    allProbability[j][i].incrementCount();
+                    probabilities[j][i].incrementCount();
+                    cumulativeProbability[j][i].incrementCount();
                 }
-                probability.incrementTotal();
-                allProbability[j][i].incrementTotal();
+                probabilities[j][i].incrementTotal();
+                cumulativeProbability[j][i].incrementTotal();
             }
         }
     }
@@ -61,13 +58,6 @@ public class Memory {
             for(int x= 0 ; x<Parameters.x;x++)
             {
                 probabilities[y][x]=new Probability();
-            }
-        }
-    }
-    private void initializeAllProbability() {
-        for(int y = 0 ; y < allProbability.length ; y++){
-            for(int x = 0 ; x <allProbability[0].length;x++){
-                allProbability[y][x] = new Probability() ;
             }
         }
     }

@@ -15,6 +15,12 @@ public class Probability {
         }
         }
 
+    public double getRatio()
+    {
+      return getProbability();
+    }
+
+
     public void incrementCount()
     {
         this.count = count+1 ;

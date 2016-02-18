@@ -7,14 +7,14 @@ public class ImageProcessor {
 
 
     public static  int[][] process(ArrayList<String> image) {
-        Pair[][] count = new Pair[Parameters.y][Parameters.x] ;
+        Probability[][] count = new Probability[Parameters.y][Parameters.x] ;
 
         initializeCount(count);
         mapImageToArrayCounter(image, count);
         return getResults(count);
     }
 
-    private static void mapImageToArrayCounter(ArrayList<String> image, Pair[][] count) {
+    private static void mapImageToArrayCounter(ArrayList<String> image, Probability[][] count) {
         int ychunk = image.size()/Parameters.y +1;
         int xchunk = (image.get(0).length())/Parameters.x +1;
         for(int y = 0 ; y < image.size() ; y++)
@@ -29,13 +29,13 @@ public class ImageProcessor {
                 count[yindex][xindex].incrementTotal();
                 if(str.charAt(x)!=' ')
                 {
-                    count[yindex][xindex].incrementBlack();
+                    count[yindex][xindex].incrementCount();
                 }
             }
         }
     }
 
-    private static int[][] getResults(Pair[][] count) {
+    private static int[][] getResults(Probability[][] count) {
         int[][] result = new int[Parameters.y][Parameters.x] ;
 
         for(int y = 0 ; y < Parameters.y ; y++)
@@ -52,11 +52,11 @@ public class ImageProcessor {
         return result;
     }
 
-    private static void initializeCount(Pair[][] count) {
+    private static void initializeCount(Probability[][] count) {
         for(int y = 0 ; y < count.length ; y++) {
             for(int x = 0 ; x<count[0].length;x++)
             {
-                count[y][x] = new Pair() ;
+                count[y][x] = new Probability() ;
             }
         }
     }
