@@ -51,18 +51,18 @@ public class BayesRecognizer {
 
     //what is probability of this number being the correct number; knowing the given input
     private double bayes(int number, int[][] result) {
-        double product = 1 ;
+        double probability = 1 ;
         for(int j = 0 ; j < result.length ; j++)
         {
             for(int i = 0 ; i < result[0].length ;i++)
             {
                 if(result[j][i]==1)
                 {
-                    product=product*memory.get(number)[j][i].getProbability()/ cumulativeProbability[j][i].getProbability() ;
+                    probability=probability*memory.get(number)[j][i].getProbability()/ cumulativeProbability[j][i].getProbability() ;
                 }
             }
         }
-        return  product ;
+        return  probability ;
     }
 
     private int getMax(double[] probability) {
