@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class BayesRecognizer {
     HashMap<Integer, Probability[][]> memory ;
     Probability[][] cumulativeProbability;
+    public double efficiency;
+
     public BayesRecognizer(HashMap<Integer, Probability[][]> memory, Probability[][] cumulativeProbability) {
         this.memory = memory ;
         this.cumulativeProbability = cumulativeProbability;
@@ -42,6 +44,7 @@ public class BayesRecognizer {
                 correctness.incrementTotal();
 
                 System.out.println(str + "Guess " +indexMax+ " CORRECT NUMBER IS "+CORRECT_ANSWER+" RATIO "+ correctness.getRatio()) ;
+                this.efficiency = correctness.getRatio();
 
             }
         } catch (FileNotFoundException e) {
